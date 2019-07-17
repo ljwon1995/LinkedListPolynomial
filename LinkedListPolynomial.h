@@ -31,6 +31,8 @@ void singleMult(termPointer *poly, float coef, int expon);
 termPointer polyAdd(termPointer polyA, termPointer polyB);
 termPointer polyMult(termPointer polyA, termPointer polyB);
 void deleteAll(termPointer *poly);
+termPointer polyRead(void);
+float peval(termPointer poly, float x);
 
 
     

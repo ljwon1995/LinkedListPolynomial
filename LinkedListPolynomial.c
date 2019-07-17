@@ -367,3 +367,51 @@ termPointer polyMult(termPointer polyA, termPointer polyB){
     
     return resultPoly;
 }
+
+termPointer polyRead(void){
+    termPointer result, cur;
+    double coef;
+    int ef;
+    
+    
+    result = (termPointer)malloc(sizeof(term)); //need to delete at last.
+    cur = result;
+    
+    printf("Less than Zero Efficient to Quit\n");
+    printf("Coefficient, Efficient? : ");
+    
+    scanf("%lf %d", &coef, &ef);
+    
+    while(ef >= 0){
+        
+        cur->link = (termPointer)malloc(sizeof(term));
+        cur = cur->link;
+        
+        cur->coef = coef;
+        cur->expon = ef;
+        cur -> link = NULL;
+        
+        printf("Less than Zero Efficient to Quit\n");
+        printf("Coefficient, Efficient? : ");
+        scanf("%lf %d", &coef, &ef);
+    }
+    
+    cur = result;
+    result = result->link;
+    free(cur);
+    
+    
+    return result;
+
+}
+
+float peval(termPointer poly, float x){
+    float sum = 0;
+    
+    while(poly != NULL){
+        sum += poly->coef * power(x, poly->expon);
+        poly = poly->link;
+    }
+    
+    return sum;
+}
